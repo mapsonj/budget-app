@@ -9,14 +9,14 @@ import getVisibleExpenses from './selectors/expenses';
 import './App.css';
 const store = configureStore();
 
-store.dispatch(addExpense({ description: 'rent'}));
-store.dispatch(addExpense({ description: 'electric'}));
-store.dispatch(addExpense({ description: 'phone'}));
-//store.dispatch(setTextFilter('rent'));
+store.dispatch(addExpense({ description: 'Water bill'}));
+store.dispatch(addExpense({ description: 'Gas bill'}));
+store.dispatch(addExpense({ description: 'Phone bill'}));
+//store.dispatch(setTextFilter('water'));
 //store.dispatch(sortByCategory());
 
 setTimeout(() => {
-	store.dispatch(setTextFilter('rent'));
+	store.dispatch(setTextFilter('bill'));
 }, 3000)
 
 const state = store.getState();

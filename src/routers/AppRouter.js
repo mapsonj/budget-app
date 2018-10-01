@@ -7,21 +7,19 @@ import Help from '../components/HelpPage/Help';
 import Nav from '../components/Nav/Nav';
 import PageNotFound from '../components/PageNotFound/PageNotFound';
 
-const AppRouter = () => {
-	return(
-		<BrowserRouter>
-			<div>
-				<Nav />
-				<Switch>
-			    <Route path="/" component={ExpenseDashboard} exact={true} />
-			    <Route path="/create" component={AddExpense} />
-			    <Route path="/edit/:id" component={EditExpense} />
-			    <Route path="/help" component={Help} />
-			    <Route component={PageNotFound} />
-			  </Switch>
-		  </div>
-  	</BrowserRouter>
-	);
-}
+const AppRouter = () => (
+	<BrowserRouter>
+		<div>
+			<Nav />
+			<Switch>
+		    <Route path="/" component={ExpenseDashboard} exact={true} />
+		    <Route path="/create" component={AddExpense} />
+		    <Route path="/edit/:id" component={EditExpense} />
+		    <Route path="/help" component={Help} />
+		    <Route component={PageNotFound} />
+		  </Switch>
+	  </div>
+	</BrowserRouter>
+);
 
 export default AppRouter;
