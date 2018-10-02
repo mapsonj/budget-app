@@ -9,8 +9,7 @@ export const addExpense = (
 		account = '', 
 		category = '', 
 		amount = 0, 
-		createdAt = 0, 
-		transactionDate = 0
+		createdAt = 0
 	} = {}
 ) => ({
 	type: 'ADD_EXPENSE',
@@ -20,8 +19,7 @@ export const addExpense = (
 		note,
 		category,
 		amount,
-		createdAt,
-		transactionDate
+		createdAt
 	}
 });
 
