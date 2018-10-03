@@ -23,8 +23,8 @@ class ExpenseForm extends React.Component {
 	state = {
 		description: '',
 		note: '',
-		category: '',
-		//account: '',
+		category: ['Bills','Leisure'],
+		account: [],
 		amount: '',
 		createdAt: new Date(),
 		error: '',
