@@ -110,9 +110,9 @@ class ExpenseForm extends React.Component {
             variant="outlined"
           >
             {this.state.category.map((option, i) => (
-            <MenuItem key={option.value} value={option[i]}>
+            <MenuItem key={option.value} value={option.value}>
 
-              {option.select}
+              {option}
             	
             </MenuItem>
 
