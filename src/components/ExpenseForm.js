@@ -5,6 +5,7 @@ import { format } from 'date-fns';
 import DatePicker from 'material-ui-pickers/DatePicker';
 import { withStyles } from '@material-ui/core/styles';
 //import AddIcon from '@material-ui/icons/Add';
+import MenuItem from '@material-ui/core/MenuItem';
 import Button from '@material-ui/core/Button';
 import MuiPickersUtilsProvider from 'material-ui-pickers/utils/MuiPickersUtilsProvider';
 
@@ -19,16 +20,22 @@ const styles = theme => ({
     marginRight: '15px',
   }
 });
+
 class ExpenseForm extends React.Component {
-	state = {
-		description: '',
-		note: '',
-		category: ['Bills','Leisure'],
-		account: [],
-		amount: '',
-		createdAt: new Date(),
-		error: '',
-	};
+	constructor(props) {
+		super(props);
+	
+		this.state = {
+
+			description: props.expense ? props.expense.description : '',
+			note: props.note ? props.expense.note : '',
+			category: ['Bills','Leisure', 'Dogs'],
+			account: [],
+			amount: props.amount ? (props.expense.amount / 100).toString() : '',
+			createdAt: new Date(),
+			error: '',
+		};
+	}
 
 	onSubmit = (e) => {
 		e.preventDefault();
@@ -44,6 +51,12 @@ class ExpenseForm extends React.Component {
 	onDescriptionChange = (e) => {
 		const description = e.target.value;
 		this.setState(() => ({ description }));
+	};
+
+	onCategoryChange = (e) => {
+		//const category = e.target.value;
+		console.log(this.state.category.value);
+		//this.setState(() => ({ category }));
 	};
 
 	onAmountChange = (e) => {
@@ -90,6 +103,21 @@ class ExpenseForm extends React.Component {
 						variant="outlined"
 						required
 					/>
+					<TextField
+						select
+            value={this.state.category}
+            onChange={this.onCategoryChange}
+            variant="outlined"
+          >
+            {this.state.category.map((option, i) => (
+            <MenuItem key={option.value} value={option[i]}>
+
+              {option.select}
+            	
+            </MenuItem>
+
+          	))}
+          </TextField>
 					<TextField
 						type="text"
 						placeholder="Amount"
