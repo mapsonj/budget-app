@@ -21,17 +21,17 @@ const styles = theme => ({
   }
 });
 
+
 class ExpenseForm extends React.Component {
 	constructor(props) {
 		super(props);
 	
 		this.state = {
-
 			description: props.expense ? props.expense.description : '',
-			note: props.note ? props.expense.note : '',
-			category: ['Bills','Leisure', 'Dogs'],
+			note: props.expense ? props.expense.note : '',
+			category: props.expense ? props.expense.category : '',
 			account: [],
-			amount: props.amount ? (props.expense.amount / 100).toString() : '',
+			amount: props.expense ? (props.expense.amount / 100).toString() : '',
 			createdAt: new Date(),
 			error: '',
 		};
@@ -42,8 +42,9 @@ class ExpenseForm extends React.Component {
 		this.props.onSubmit({
 			createdAt: format(this.state.createdAt, 'MM/dd/YYYY'),
 			description: this.state.description,
+			category: this.state.category,
 			amount: parseFloat(this.state.amount,10)  * 100 ,
-			note: this.state.note
+			note: this.state.note,
 		});
 	};
 
@@ -53,15 +54,16 @@ class ExpenseForm extends React.Component {
 		this.setState(() => ({ description }));
 	};
 
-	onCategoryChange = (e) => {
-		//const category = e.target.value;
-		console.log(this.state.category.value);
-		//this.setState(() => ({ category }));
-	};
+	onCategoryChange = (name) => event => {
+		console.log(event.target.value);
+    this.setState({
+      [name]: event.target.value,
+    });
+  };
 
 	onAmountChange = (e) => {
 		const amount = e.target.value;
-		if(amount.match(/^\d*(\.\d{0,2})?$/)) {
+		if(!amount || amount.match(/^\d{1,}(\.\d{0,2})?$/)) {
 			this.setState(() => ({ amount }));
 		}
 	};
@@ -79,6 +81,23 @@ class ExpenseForm extends React.Component {
 
 	render() {
 		const { classes } = this.props;
+		const category = [
+  {
+    value: 'Personal Care',
+  },
+  {
+    value: 'Dogs',
+  },
+  {
+    value: 'Food',
+  },
+  {
+    value: 'Leisure',
+  },
+  {
+    value: 'Other',
+  },
+];
 		return (
 			<div>
 				<form onSubmit={this.onSubmit} className={classes.container}>
@@ -105,18 +124,22 @@ class ExpenseForm extends React.Component {
 					/>
 					<TextField
 						select
+						className={classes.textField}
             value={this.state.category}
-            onChange={this.onCategoryChange}
+            onChange={this.onCategoryChange('category')}
+            SelectProps={{
+            MenuProps: {
+              className: classes.menu,
+            },
+          }}
             variant="outlined"
           >
-            {this.state.category.map((option, i) => (
+            
+      				{category.map(option => (
             <MenuItem key={option.value} value={option.value}>
-
-              {option}
-            	
+              {option.value}
             </MenuItem>
-
-          	))}
+          ))}
           </TextField>
 					<TextField
 						type="text"
@@ -129,6 +152,7 @@ class ExpenseForm extends React.Component {
 					<TextField
 						multiline
 						className={classes.textField}
+						value={this.state.note}
 						placeholder="Add a note for your expense (optional)"
 						onChange={this.onNoteChange}
 						variant="outlined"
