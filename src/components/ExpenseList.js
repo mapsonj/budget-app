@@ -19,7 +19,7 @@ const ExpenseList = (props) => (
         <TableRow>
           <TableCell><TableSortLabel id='date'>Date</TableSortLabel></TableCell>
           <TableCell>Description</TableCell>
-          <TableCell>Category</TableCell>
+          <TableCell><TableSortLabel id='category'>Category</TableSortLabel></TableCell>
           <TableCell><TableSortLabel id='amount'>Amount</TableSortLabel></TableCell>
           <TableCell>Note</TableCell>
           <TableCell className={"actions-th"}>Actions</TableCell>

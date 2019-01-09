@@ -6,6 +6,7 @@ import DatePicker from 'material-ui-pickers/DatePicker';
 import { withStyles } from '@material-ui/core/styles';
 //import AddIcon from '@material-ui/icons/Add';
 import MenuItem from '@material-ui/core/MenuItem';
+import InputAdornment from '@material-ui/core/InputAdornment';
 import Button from '@material-ui/core/Button';
 import MuiPickersUtilsProvider from 'material-ui-pickers/utils/MuiPickersUtilsProvider';
 
@@ -82,22 +83,22 @@ class ExpenseForm extends React.Component {
 	render() {
 		const { classes } = this.props;
 		const category = [
-  {
-    value: 'Personal Care',
-  },
-  {
-    value: 'Dogs',
-  },
-  {
-    value: 'Food',
-  },
-  {
-    value: 'Leisure',
-  },
-  {
-    value: 'Other',
-  },
-];
+		  {
+		    value: 'Personal Care',
+		  },
+		  {
+		    value: 'Dogs',
+		  },
+		  {
+		    value: 'Food',
+		  },
+		  {
+		    value: 'Leisure',
+		  },
+		  {
+		    value: 'Other',
+		  },
+		];
 		return (
 			<div>
 				<form onSubmit={this.onSubmit} className={classes.container}>
@@ -130,10 +131,12 @@ class ExpenseForm extends React.Component {
             SelectProps={{
             MenuProps: {
               className: classes.menu,
+              startAdornment: <InputAdornment position="start">Select Category</InputAdornment>,
             },
           }}
-            variant="outlined"
+          	variant="outlined"
           >
+          	<MenuItem value="">Select</MenuItem>
             
       				{category.map(option => (
             <MenuItem key={option.value} value={option.value}>
