@@ -22,11 +22,28 @@ const styles = theme => ({
   }
 });
 
+	const categories = [
+	  {
+	    value: 'Personal Care',
+	  },
+	  {
+	    value: 'Dogs',
+	  },
+	  {
+	    value: 'Food',
+	  },
+	  {
+	    value: 'Leisure',
+	  },
+	  {
+	    value: 'Other',
+	  },
+	];
+
 
 class ExpenseForm extends React.Component {
 	constructor(props) {
 		super(props);
-	
 		this.state = {
 			description: props.expense ? props.expense.description : '',
 			note: props.expense ? props.expense.note : '',
@@ -82,23 +99,7 @@ class ExpenseForm extends React.Component {
 
 	render() {
 		const { classes } = this.props;
-		const category = [
-		  {
-		    value: 'Personal Care',
-		  },
-		  {
-		    value: 'Dogs',
-		  },
-		  {
-		    value: 'Food',
-		  },
-		  {
-		    value: 'Leisure',
-		  },
-		  {
-		    value: 'Other',
-		  },
-		];
+		console.log(this.state.category);
 		return (
 			<div>
 				<form onSubmit={this.onSubmit} className={classes.container}>
@@ -131,14 +132,14 @@ class ExpenseForm extends React.Component {
             SelectProps={{
             MenuProps: {
               className: classes.menu,
-              startAdornment: <InputAdornment position="start">Select Category</InputAdornment>,
+
             },
           }}
           	variant="outlined"
           >
-          	<MenuItem value="">Select</MenuItem>
-            
-      				{category.map(option => (
+          	
+            <MenuItem value=""><em>Select Category</em></MenuItem>
+      				{categories.map(option => (
             <MenuItem key={option.value} value={option.value}>
               {option.value}
             </MenuItem>
