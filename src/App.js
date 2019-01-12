@@ -13,10 +13,10 @@ const store = configureStore();
 
 
 
-store.dispatch(addExpense({ createdAt: 2000, description: 'Gas bill', category: 'bills', account: 'Chase', amount: 8800}));
-store.dispatch(addExpense({ createdAt: 1000, description: 'Phone bill', category: 'bills', account: 'Chase', amount: 8200 }));
-store.dispatch(addExpense({ createdAt: 5000, description: 'Dog Food', category: 'Saphie', account: 'Citi', amount: 6000}));
-store.dispatch(addExpense({ createdAt: 3000, description: 'Rent', category: 'Rent', account: 'Chase', amount: 95200}));
+// store.dispatch(addExpense({ createdAt: 2000, description: 'Gas bill', category: 'bills', account: 'Chase', amount: 8800}));
+// store.dispatch(addExpense({ createdAt: 1000, description: 'Phone bill', category: 'bills', account: 'Chase', amount: 8200 }));
+// store.dispatch(addExpense({ createdAt: 5000, description: 'Dog Food', category: 'Saphie', account: 'Citi', amount: 6000}));
+// store.dispatch(addExpense({ createdAt: 3000, description: 'Rent', category: 'Rent', account: 'Chase', amount: 95200}));
 
 //store.dispatch(sortByCategory());
 
