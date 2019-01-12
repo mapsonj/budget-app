@@ -4,11 +4,17 @@ import TextField from '@material-ui/core/TextField';
 import { format } from 'date-fns';
 import DatePicker from 'material-ui-pickers/DatePicker';
 import { withStyles } from '@material-ui/core/styles';
-//import AddIcon from '@material-ui/icons/Add';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogContentText from '@material-ui/core/DialogContentText';
+import DialogTitle from '@material-ui/core/DialogTitle';
+import AddIcon from '@material-ui/icons/Add';
 import MenuItem from '@material-ui/core/MenuItem';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import Button from '@material-ui/core/Button';
+import Fab from '@material-ui/core/Fab';
 import MuiPickersUtilsProvider from 'material-ui-pickers/utils/MuiPickersUtilsProvider';
+
+
 
 const styles = theme => ({
   container: {
@@ -129,13 +135,14 @@ class ExpenseForm extends React.Component {
 						className={classes.textField}
             value={this.state.category}
             onChange={this.onCategoryChange('category')}
+            variant="outlined"
             SelectProps={{
             MenuProps: {
               className: classes.menu,
 
             },
           }}
-          	variant="outlined"
+          
           >
           	
             <MenuItem value=""><em>Select Category</em></MenuItem>
@@ -161,14 +168,13 @@ class ExpenseForm extends React.Component {
 						onChange={this.onNoteChange}
 						variant="outlined"
 					/>
-					<Button
+					<Fab
 						type="submit"
-						variant="outlined"
-						color="primary"
+						color="secondary"
 						className={classes.button}
 					>
-					Add Expense
-					</Button>
+					<AddIcon />
+					</Fab>
 
 				</form>
 			</div>

@@ -8,15 +8,10 @@ import IconButton from '@material-ui/core/IconButton';
 import Button from '@material-ui/core/Button';
 import DeleteIcon from '@material-ui/icons/Delete';
 import { Link } from 'react-router-dom';
+import EditButton from './EditExpense/EditButton';
 
 const ExpenseListItem = ({ dispatch, category, id, account, description, note, amount, createdAt }) => (
-	// {	<div>
-	// 		<h3>{description}</h3>
-	// 		<p>{createdAt} - {category} - {account} - {amount} - {note} </p>
-	// 		<button onClick={() => {
-	// 		dispatch(removeExpense({id}));
-	// 	}}>Remove</button>
-	// 	</div>}
+
 <TableRow key={id}>
   <TableCell>{createdAt}</TableCell>
   <TableCell>{description}</TableCell>
@@ -28,6 +23,7 @@ const ExpenseListItem = ({ dispatch, category, id, account, description, note, a
   >
   <Link to={`/edit/${id}`}>
     <IconButton 
+
       variant="fab" 
       size="small"
        
