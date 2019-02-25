@@ -9,6 +9,7 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import AddIcon from '@material-ui/icons/Add';
 import Fab from '@material-ui/core/Fab';
 import EditExpense from '../EditExpense/EditExpense';
+import './dialogs.css';
 
 export default class extends React.Component{
 	state = {
@@ -30,7 +31,7 @@ export default class extends React.Component{
         open={this.state.open}
         onClose={this.handleClose}
         aria-labelledby="form-dialog-title"
-        maxWidth='fit-content'
+        //maxWidth='fit-content'
       >
         <DialogTitle id="form-dialog-title"></DialogTitle>
         <DialogContent>

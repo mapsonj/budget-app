@@ -12,6 +12,7 @@ import TableSortLabel from '@material-ui/core/TableSortLabel';
 import { sortByDate, sortByCategory, sortByAmount } from '../actions/filters';
 import './ExpenseList.css';
 import Create from './Dialogs/Create';
+import Edit from './Dialogs/Edit';
 
 const ExpenseList = (props) => (
   <Paper className={"root"}>

@@ -4,13 +4,15 @@ import TextField from '@material-ui/core/TextField';
 import { format } from 'date-fns';
 import DatePicker from 'material-ui-pickers/DatePicker';
 import { withStyles } from '@material-ui/core/styles';
-import DialogContent from '@material-ui/core/DialogContent';
-import DialogContentText from '@material-ui/core/DialogContentText';
-import DialogTitle from '@material-ui/core/DialogTitle';
+import Select from '@material-ui/core/Select';
+import OutlinedInput from '@material-ui/core/OutlinedInput';
+//import DialogContent from '@material-ui/core/DialogContent';
+////import DialogContentText from '@material-ui/core/DialogContentText';
+//import DialogTitle from '@material-ui/core/DialogTitle';
 import AddIcon from '@material-ui/icons/Add';
 import MenuItem from '@material-ui/core/MenuItem';
-import InputAdornment from '@material-ui/core/InputAdornment';
-import Button from '@material-ui/core/Button';
+
+//import Button from '@material-ui/core/Button';
 import Fab from '@material-ui/core/Fab';
 import MuiPickersUtilsProvider from 'material-ui-pickers/utils/MuiPickersUtilsProvider';
 
@@ -25,12 +27,18 @@ const styles = theme => ({
   textField: {
     marginLeft: '15px',
     marginRight: '15px',
+  },
+  select: {
+    marginRight: '15px',
   }
 });
 
 	const categories = [
 	  {
 	    value: 'Personal Care',
+	  },
+	  {
+	    value: 'Bills',
 	  },
 	  {
 	    value: 'Dogs',
@@ -111,7 +119,7 @@ class ExpenseForm extends React.Component {
 				<form onSubmit={this.onSubmit} className={classes.container}>
 					<MuiPickersUtilsProvider utils={DateFnsUtils}>
 			      <DatePicker
-			      	variant='outlined'
+			      	variant="outlined"
 			        value={this.state.createdAt}
 			        autoOk={true}
 			        format='MM/dd/yyyy'
@@ -130,28 +138,24 @@ class ExpenseForm extends React.Component {
 						variant="outlined"
 						required
 					/>
-					<TextField
-						select
-						className={classes.textField}
+					<Select
+						
+						className={classes.select}
             value={this.state.category}
+            displayEmpty
+            //variant="outlined"
             onChange={this.onCategoryChange('category')}
-            variant="outlined"
-            SelectProps={{
-            MenuProps: {
-              className: classes.menu,
-
-            },
-          }}
-          
+            input={
+            	<OutlinedInput labelWidth={this.state.labelWidth} name="category" id="item-category" />
+          	}       
           >
-          	
             <MenuItem value=""><em>Select Category</em></MenuItem>
       				{categories.map(option => (
             <MenuItem key={option.value} value={option.value}>
               {option.value}
             </MenuItem>
           ))}
-          </TextField>
+          </Select>
 					<TextField
 						type="text"
 						placeholder="Amount"

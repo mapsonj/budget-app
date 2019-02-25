@@ -13,18 +13,19 @@ import * as firebase from 'firebase';
   firebase.initializeApp(config);
   const database = firebase.database();
 
-  database.ref().set({
-  	name: 'Jake',
-  	age: 37,
-  	isSingle: false,
-  	location: {
-  		city: 'Houston',
-  		state: 'Texas',
-  		country: 'United States',
-  	}
-  });
+  export {firebase, database as default };
+  // database.ref().set({
+  // 	name: 'Jake',
+  // 	age: 37,
+  // 	isSingle: false,
+  // 	location: {
+  // 		city: 'Houston',
+  // 		state: 'Texas',
+  // 		country: 'United States',
+  // 	}
+  // });
 
-  database.ref('attributes').set({
-  	height: 80,
-  	weight: 260
-  });
+  // database.ref('attributes').set({
+  // 	height: 80,
+  // 	weight: 260
+  // });

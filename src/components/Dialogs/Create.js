@@ -1,14 +1,15 @@
 import React, {Fragment} from 'react';
-import TextField from '@material-ui/core/TextField';
+//import TextField from '@material-ui/core/TextField';
 import Dialog from '@material-ui/core/Dialog';
 import Button from '@material-ui/core/Button';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
-import DialogContentText from '@material-ui/core/DialogContentText';
-import DialogTitle from '@material-ui/core/DialogTitle';
+//import DialogContentText from '@material-ui/core/DialogContentText';
+//import DialogTitle from '@material-ui/core/DialogTitle';
 import AddIcon from '@material-ui/icons/Add';
 import AddExpense from '../AddExpense/AddExpense';
 import Fab from '@material-ui/core/Fab';
+import './dialogs.css';
 
 export default class extends React.Component{
 	state = {
@@ -21,7 +22,7 @@ export default class extends React.Component{
 		})
 	}
 	render() {
-		const { open } = this.state
+		//const { open } = this.state
 		return <Fragment>
 		<Fab onClick={this.handleToggle} color="primary" mini='true'>
 			<AddIcon />
